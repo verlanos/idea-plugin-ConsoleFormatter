@@ -1,0 +1,58 @@
+<idea-plugin version="2">
+  <id>com.mithiran-shatru.console.formatter</id>
+  <name>Console Formatter</name>
+  <version>1.0</version>
+  <vendor email="mithiran.shatru@gmail.com" url="">Mithiran Shatru</vendor>
+
+  <description><![CDATA[
+      Tool for replacing substrings of console output with other strings e.g. replace all ";" with new lines.<br>
+      Has support for Regex in the "Regex tab" <br><br>
+      To use: <br>
+      Rightclick console window and select "Format console text" -> Shows popup with a form
+      Rightclick console window and select "Clear formatting" -> Clears the last action
+    ]]></description>
+
+  <change-notes><![CDATA[
+      First revision
+    ]]>
+  </change-notes>
+
+  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+  <idea-version since-build="131"/>
+
+  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <application-components>
+   <component>
+       <interface-class>com.mithiran_shatru.plugin.application.PluginRegistrationComponent</interface-class>
+       <implementation-class>com.mithiran_shatru.plugin.application.ConsoleFormatterRegistration</implementation-class>
+   </component>
+  </application-components>
+
+  <project-components>
+    <!-- Add your project components here -->
+  </project-components>
+
+  <actions>
+    <!-- Add your actions here -->
+      <action id="ConsoleFormatter.applyFormatting" class="com.mithiran_shatru.plugin.action.ApplyConsoleFormatting"
+              text="Format console text"
+              description="Formats the console text">
+          <add-to-group group-id="ConsoleEditorPopupMenu" anchor="first"/>
+      </action>
+      <action id="ConsoleFormatter.removeFormatting" class="com.mithiran_shatru.plugin.action.ClearConsoleFormatting"
+              text="Clear formatting" description="Removes the formatting last applied to console text">
+          <add-to-group group-id="ConsoleEditorPopupMenu" anchor="after"
+                        relative-to-action="ConsoleFormatter.applyFormatting"/>
+      </action>
+  </actions>
+
+</idea-plugin>
