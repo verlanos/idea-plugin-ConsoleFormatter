@@ -7,7 +7,7 @@ import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.project.Project;
 import com.mithiran_shatru.plugin.core.ConsoleWrapper;
-import com.mithiran_shatru.plugin.core.FormattingKernel;
+import com.mithiran_shatru.plugin.core.Kernel;
 import com.mithiran_shatru.plugin.exception.EditorNotFoundException;
 
 public class ClearConsoleFormatting extends AnAction {
@@ -19,8 +19,8 @@ public class ClearConsoleFormatting extends AnAction {
 
         try {
             consoleWrapper = new ConsoleWrapper.Builder(consoleView).build();
-            if(FormattingKernel.INSTANCE.knowsOriginal()) {
-                consoleWrapper.setText(FormattingKernel.INSTANCE.getOriginal());
+            if(Kernel.INSTANCE.knowsOriginal()) {
+                consoleWrapper.setText(Kernel.INSTANCE.getOriginal());
             }
         } catch (EditorNotFoundException editorNotFound) {
             editorNotFound.printStackTrace();

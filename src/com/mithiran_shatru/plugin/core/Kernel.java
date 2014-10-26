@@ -2,7 +2,7 @@ package com.mithiran_shatru.plugin.core;
 
 import com.mithiran_shatru.plugin.formatting.FormattingRule;
 
-public enum  FormattingKernel {
+public enum Kernel {
     INSTANCE;
 
     private String originalConsoleText;

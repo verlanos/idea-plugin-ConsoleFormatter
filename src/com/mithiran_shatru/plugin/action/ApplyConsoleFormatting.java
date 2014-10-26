@@ -14,7 +14,7 @@ import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.ui.components.JBTabbedPane;
 import com.mithiran_shatru.plugin.FormattingFactory;
 import com.mithiran_shatru.plugin.core.ConsoleWrapper;
-import com.mithiran_shatru.plugin.core.FormattingKernel;
+import com.mithiran_shatru.plugin.core.Kernel;
 import com.mithiran_shatru.plugin.exception.EditorNotFoundException;
 import com.mithiran_shatru.plugin.formatting.FormattingRule;
 import com.mithiran_shatru.plugin.formatting.FormattingType;
@@ -44,7 +44,7 @@ public class ApplyConsoleFormatting extends AnAction {
         try {
             consoleWrapper = new ConsoleWrapper.Builder(consoleView).build();
             original = consoleWrapper.getText();
-            FormattingKernel.INSTANCE.memoriseOriginal(original);
+            Kernel.INSTANCE.memoriseOriginal(original);
 
             JBPopup popup = createPopup("Format current console output",createPopupContent(),null);
             showPopup(popup,project);
